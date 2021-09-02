@@ -4,7 +4,6 @@
 
 import numpy as np #Импорт библиотеки "numpy"
 
-
 def random_predict(number: int = 1) -> int:
     """Рандомно угадываем число
 
@@ -21,7 +20,10 @@ def random_predict(number: int = 1) -> int:
     while True:
         count += 1
         c = (b -a)//3
-        predict_number = np.random.randint(int(a+c), int(b+1))  # предполагаемое число
+        if c == 0: 
+            c=1
+        #predict_number = np.random.randint(int(a+c), int(b+1))  # предполагаемое число
+        predict_number = a+c
            
         if predict_number > number:
             #print("Число должно быть меньше!")
@@ -49,14 +51,14 @@ def score_game(random_predict) -> int:
     """
     count_ls = []
     #np.random.seed(1)  # фиксируем сид для воспроизводимости
-    random_array = np.random.randint(1, 101, size=(3))  # загадали список чисел
+    random_array = np.random.randint(1, 101, size=(50))  # загадали список чисел
 
     for number in random_array:
         count_ls.append(random_predict(number))
 
     score = int(np.mean(count_ls))
-    print(f"Ваш алгоритм угадывает число в среднем за:{score} попыток")
+    #print(f"Ваш алгоритм угадывает число в среднем за:{score} попыток")
     return score
     
-score_game(random_predict)
-print(f"Ваш алгоритм угадывает число в среднем за:{score_game} попыток")
+#score_game(random_predict)
+print(f"Ваш алгоритм угадывает число в среднем за:{score_game(random_predict)} попыток")
