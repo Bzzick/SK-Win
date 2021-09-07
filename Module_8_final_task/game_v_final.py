@@ -19,9 +19,6 @@ def random_predict(number: int = 1) -> int:
     
     while True:
         count += 1
-        #c = (b -a)//2 #сужение диапазона вдвое (деление на 2)
-        #if c == 0: 
-        #    c=1
         ###predict_number = np.random.randint(int(a+c), int(b+1))  # предполагаемое число ## закладка на случай внедрения случайного угадывания - НЕ ЕСПОЛЬЗОВАЛ
         predict_number = (b + a)//2
            
